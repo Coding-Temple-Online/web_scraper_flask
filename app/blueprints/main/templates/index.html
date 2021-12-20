@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('main.static', filename='css/main.css') }}">
+  </head>
+  <body>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">Action 1</a>
+                            <a class="dropdown-item" href="#">Action 2</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <form action="{{ url_for('main.index') }}" method="POST">
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group">
+                        <input name="player_search" type="text" class="form-control" placeholder="Type a player's name here" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-info btn-block" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+
+        <h4>Set Cronjob here</h4>
+        <form action="{{ url_for('main.cronjob') }}" method="POST">
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group">
+                        <input name="player_search" type="text" class="form-control" placeholder="Type a player's name here" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-warning btn-block" type="submit">Set Cronjob</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <hr />
+
+    <table class="table table-striped table-inverse">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th>Team</th>
+                <th>POS</th>
+                <th>Age</th>
+                <th>GP</th>
+                <th>MPG</th>
+                <th>FTA</th>
+                <th>FT%</th>
+                <th>2PA</th>
+                <th>2P%</th>
+                <th>3PA</th>
+                <th>3P%</th>
+                <th>PPG</th>
+                <th>RPG</th>
+                <th>APG</th>
+                <th>SPG</th>
+                <th>BPG</th>
+                <th>TOPG</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in players %}
+                <tr>
+                    <th>{{ p.name }}</th>
+                    <th>{{ p.team }}</th>
+                    <th>{{ p.position }}</th>
+                    <th>{{ p.age }}</th>
+                    <th>{{ p.gp }}</th>
+                    <th>{{ p.mpg }}</th>
+                    <th>{{ p.fta }}</th>
+                    <th>{{ p.ftp }}</th>
+                    <th>{{ p.tpa }}</th>
+                    <th>{{ p.tpp }}</th>
+                    <th>{{ p.thpa }}</th>
+                    <th>{{ p.thpp }}</th>
+                    <th>{{ p.ppg }}</th>
+                    <th>{{ p.rpg }}</th>
+                    <th>{{ p.apg }}</th>
+                    <th>{{ p.spg }}</th>
+                    <th>{{ p.bpg }}</th>
+                    <th>{{ p.topg }}</th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
